@@ -15,7 +15,7 @@ export const getThoughtsByid = async (req: Request, res: Response) => {
   try {
     const application = await Thoughts.findOne({ _id: req.params.applicationId });
 
-    if (!application) {
+    if (!Thoughts) {
       return res.status(404).json({ message: 'No application with that ID' });
     }
 

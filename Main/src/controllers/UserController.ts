@@ -1,4 +1,4 @@
-import {  Users } from '../models/index.js';
+import { Users } from '../models/index.js';
 import { Request, Response } from 'express';
 
 
@@ -14,8 +14,12 @@ import { Request, Response } from 'express';
 
   // Gets a single user
   export const getUserById = async (req: Request, res: Response) => {
+
+    console.log ('users get by id ', req.params);
+
     try {
-      const user = await Users.findOne({ _id: req.params.userId })
+      // const user = await Users.findOne({ _id: req.params.userId })
+      const user = await Users.findOne({ _id: req.params.id })
         .select('-__v');
 
       if (!user) {
@@ -32,6 +36,8 @@ import { Request, Response } from 'express';
 
   // creates a new user
   export const createUser = async (req: Request, res: Response) => {
+    // console.log('create user route =', req.body);
+
     try {
       const user = await Users.create(req.body);
       res.json(user);

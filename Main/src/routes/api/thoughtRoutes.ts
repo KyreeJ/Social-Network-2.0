@@ -1,5 +1,6 @@
 import { Router } from 'express';
 const router = Router();
+
 import {
   getALLThoughts,
   getThoughtsByid,
@@ -13,13 +14,12 @@ router.route('/')
   .get(getALLThoughts)    
   .post(createThoughts);   
 
-
 router
   .route('/:tId')
   .get(getThoughtsByid)    
   .put(updateThoughts)
   .delete(deleteThoughts)
 
-   export default router
+export { router as thoughtRoutes }
 
 
